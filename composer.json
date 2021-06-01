@@ -1,0 +1,16 @@
+{
+    "name": "ongoua/pvit",
+    "type": "library",
+    "description": "A package to use PVit payment gateway",
+    "keywords": ["pvit","php","packagist","composer", "ongoua"],
+    "homepage": "https://packagist.org/users/ongoua/packages/pvit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dimitri ONGOUA",
+            "email": "ongouadimitri5@gmail.com",
+            "homepage": "https://twitter.com/dimitriongoua",
+            "role": "Developer"
+        }
+    ]
+}
