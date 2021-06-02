@@ -2,7 +2,13 @@
     "name": "ongoua/pvit",
     "type": "library",
     "description": "A package to use PVit payment gateway",
-    "keywords": ["pvit","php","packagist","composer", "ongoua"],
+    "keywords": [
+        "pvit",
+        "php",
+        "packagist",
+        "composer",
+        "ongoua"
+    ],
     "homepage": "https://packagist.org/users/ongoua/packages/pvit",
     "license": "MIT",
     "authors": [
@@ -12,5 +18,16 @@
             "homepage": "https://twitter.com/dimitriongoua",
             "role": "Developer"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "Ongoua": "src/"
+        }
+    },
+    "require": {
+        "ext-curl": "*",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "ext-libxml": "*"
+    }
 }

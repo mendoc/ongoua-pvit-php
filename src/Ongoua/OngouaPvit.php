@@ -72,21 +72,45 @@ class OngouaPvit
     {
         $this->validate();
 
-        $response = new OngouaPvitResponse();
-        $response->setMessage("tout est cool");
-        $response->setStatut("200");
+        $xml = $this->request();
 
-        return $response;
+        return $this::parse($xml);
     }
 
+    /**
+     * @throws Exception
+     */
+    private function request(): string
+    {
+        $params = 'tel_marchand=' . $this->telMarchand . '&montant=' . $this->montant . '&tel_client=' . $this->telClient . '&ref=' . $this->ref . '&token=' . $this->token . '&action=' . $this->action . '&service=' . $this->service . '&operateur=' . $this->operateur . '&agent=' . $this->agent;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_URL, $this->pvitUrl);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $resultat = curl_exec($ch);
+
+        if ($resultat === false) throw new Exception("Error while executing the query");
+
+        return $resultat;
+    }
+
+    /**
+     * @throws Exception
+     */
     public static function parse(string $xml): OngouaPvitResponse
     {
-        // https://www.geeksforgeeks.org/how-to-convert-xml-file-into-array-in-php/
-        $response = new OngouaPvitResponse();
-        $response->setMessage("tout est cool");
-        $response->setStatut("200");
+        libxml_use_internal_errors(true);
 
-        return $response;
+        $xmlObj = simplexml_load_string("$xml");
+        if ($xmlObj === false) throw new Exception("The data is not correctly formatted in XML.");
+
+        $json = json_encode($xmlObj, JSON_UNESCAPED_UNICODE);
+        $resArray = json_decode($json, true);
+
+        return OngouaPvitResponse::fromArray($resArray);
     }
 
     /**
