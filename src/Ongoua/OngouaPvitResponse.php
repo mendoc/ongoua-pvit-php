@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Ongoua;
-
 
 class OngouaPvitResponse
 {
@@ -13,14 +11,6 @@ class OngouaPvitResponse
     private $operateur;
     private $type;
     private $ref;
-
-    /**
-     * OngouaPvitResponse constructor.
-     */
-    public function __construct()
-    {
-    }
-
 
     public static function fromArray(array $data): OngouaPvitResponse
     {
@@ -39,119 +29,117 @@ class OngouaPvitResponse
 
     private static function getValue(array $arr, string $key): string
     {
-        if (!isset($arr[$key]) || gettype($arr[$key]) === "array") return "";
-
-        return $arr[$key];
+        return (!isset($arr[$key]) || gettype($arr[$key]) === "array") ? "" : $arr[$key];
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getTelClient()
+    public function getTelClient(): string
     {
         return $this->telClient;
     }
 
     /**
-     * @param mixed $telClient
+     * @param string $telClient
      */
-    private function setTelClient($telClient)
+    private function setTelClient(string $telClient)
     {
         $this->telClient = $telClient;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getOperateur()
+    public function getOperateur(): string
     {
         return $this->operateur;
     }
 
     /**
-     * @param mixed $operateur
+     * @param string $operateur
      */
-    private function setOperateur($operateur)
+    private function setOperateur(string $operateur)
     {
         $this->operateur = $operateur;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getType()
+    public function getType(): int
     {
         return $this->type;
     }
 
     /**
-     * @param mixed $type
+     * @param int $type
      */
-    private function setType($type)
+    private function setType(int $type)
     {
         $this->type = $type;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRef()
+    public function getRef(): string
     {
         return $this->ref;
     }
 
     /**
-     * @param mixed $ref
+     * @param string $ref
      */
-    private function setRef($ref)
+    private function setRef(string $ref)
     {
         $this->ref = $ref;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getStatut()
+    public function getStatut(): string
     {
         return $this->statut;
     }
 
     /**
-     * @param mixed $statut
+     * @param string $statut
      */
-    private function setStatut($statut)
+    private function setStatut(string $statut)
     {
         $this->statut = $statut;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
 
     /**
-     * @param mixed $message
+     * @param string $message
      */
-    private function setMessage($message)
+    private function setMessage(string $message)
     {
         $this->message = $message;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getToken()
+    public function getToken(): string
     {
         return $this->token;
     }
 
     /**
-     * @param mixed $token
+     * @param string $token
      */
-    private function setToken($token)
+    private function setToken(string $token)
     {
         $this->token = $token;
     }
