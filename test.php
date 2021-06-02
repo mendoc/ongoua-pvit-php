@@ -12,9 +12,7 @@ $clientPvit->setTelClient("074213803");
 
 try {
     $response = $clientPvit->send();
-
     echo $response->getStatut();
-
 } catch (Exception $e) {
     echo 'Error message: ' . $e->getMessage();
 }

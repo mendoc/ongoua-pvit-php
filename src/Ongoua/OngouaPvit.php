@@ -79,8 +79,14 @@ class OngouaPvit
         return $response;
     }
 
-    public static function parse(string $xml)
+    public static function parse(string $xml): OngouaPvitResponse
     {
+        // https://www.geeksforgeeks.org/how-to-convert-xml-file-into-array-in-php/
+        $response = new OngouaPvitResponse();
+        $response->setMessage("tout est cool");
+        $response->setStatut("200");
+
+        return $response;
     }
 
     /**
