@@ -11,6 +11,7 @@ class OngouaPvitResponse
     private $operateur;
     private $type;
     private $ref;
+    private $agent;
 
     public static function fromArray(array $data): OngouaPvitResponse
     {
@@ -23,6 +24,7 @@ class OngouaPvitResponse
         $response->setTelClient(static::getValue($data, "TEL_CLIENT"));
         $response->setToken(static::getValue($data, "TOKEN"));
         $response->setMessage(static::getValue($data, "MESSAGE"));
+        $response->setAgent(static::getValue($data, "AGENT"));
 
         return $response;
     }
@@ -30,6 +32,22 @@ class OngouaPvitResponse
     private static function getValue(array $arr, string $key): string
     {
         return (!isset($arr[$key]) || gettype($arr[$key]) === "array") ? "" : $arr[$key];
+    }
+
+    /**
+     * @return string
+     */
+    public function getAgent(): string
+    {
+        return $this->agent;
+    }
+
+    /**
+     * @param string $agent
+     */
+    private function setAgent(string $agent)
+    {
+        $this->agent = $agent;
     }
 
     /**
